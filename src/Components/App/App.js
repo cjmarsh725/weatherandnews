@@ -17,9 +17,9 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        {this.state.weatherData.map(day => {
+        {this.state.weatherData.map((day, i) => {
           return (
-            <Card day={day} />
+            <Card {...day} key={i}/>
           );
         })}
       </div>
