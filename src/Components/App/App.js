@@ -18,6 +18,7 @@ class App extends Component {
     return (
       <div className="App">
         {this.state.weatherData.map((day, i) => {
+          if (!day.isDaytime) return null;
           return (
             <Card {...day} key={i}/>
           );
