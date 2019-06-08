@@ -22,10 +22,12 @@
 .description-temp {
   font-size: 24px;
   font-weight: bold;
+  margin: 2px;
 }
 
 .description-forecast {
   font-size: 16px;
+  color: #cccccc;
 }
 
 .img-container {
