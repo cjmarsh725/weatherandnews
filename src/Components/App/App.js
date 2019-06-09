@@ -7,6 +7,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      isWeatherHidden: [],
       weatherData: [],
       placeholder: localStorage.getItem("placeholder") || "Sunnyvale, CA, USA",
       location: ""
@@ -17,6 +18,7 @@ class App extends Component {
     this.filterAddress = this.filterAddress.bind(this);
     this.getAddressData = this.getAddressData.bind(this);
     this.getWeatherData = this.getWeatherData.bind(this);
+    this.toggleWeatherCard = this.toggleWeatherCard.bind(this);
   }
 
   componentDidMount() {
@@ -76,9 +78,20 @@ class App extends Component {
     axios.get(`https://api.weather.gov/points/${coords.lat},${coords.lng}`)
       .then(response => {
         axios.get(response.data.properties.forecast)
-          .then(response2 => this.setState({weatherData: response2.data.properties.periods}));
+          .then(response2 => {
+            const weatherData = response2.data.properties.periods.filter(w => w.isDaytime);
+            this.setState({weatherData: weatherData, isWeatherHidden: Array(weatherData.length).fill(true)});
+          });
       })
       .catch(err => alert("There was an error fetching the weather data: " + err));
+  }
+
+  toggleWeatherCard(index) {
+    console.log(index);
+    this.setState({ isWeatherHidden: this.state.isWeatherHidden.map((isHidden, i) => {
+      if (i === index) return !isHidden;
+      else return isHidden;
+    })});
   }
 
   render() {
@@ -94,9 +107,10 @@ class App extends Component {
                   onChange={this.inputChange} 
                   onKeyDown={this.keyPress}/>
           {this.state.weatherData.map((day, i) => {
-            if (!day.isDaytime) return null;
             return (
-              <WeatherCard {...day} key={i}/>
+              <WeatherCard {...day} 
+                  isHidden={this.state.isWeatherHidden[i]} 
+                  toggle={this.toggleWeatherCard} index={i} key={i}/>
             );
           })}
         </div>
