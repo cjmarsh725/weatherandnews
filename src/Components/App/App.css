@@ -13,4 +13,18 @@
 
 .location {
   margin-top: 16px;
+  height: 20px;
+  text-align: center;
+  background-color: #3c3c3c;
+  color: white;
+  border: 1px solid #555555;
+}
+
+.location:focus {
+  border: 1px solid #777777;
+  outline: none;
+}
+
+::selection{
+  background: #222222;
 }
