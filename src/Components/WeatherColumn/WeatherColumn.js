@@ -7,7 +7,7 @@ class WeatherColumn extends Component {
   constructor() {
     super();
     this.state = {
-      isWeatherHidden: [],
+      isHidden: [],
       weatherData: [],
       placeholder: localStorage.getItem("placeholder") || "Sunnyvale, CA, USA",
       location: ""
@@ -82,21 +82,21 @@ class WeatherColumn extends Component {
         axios.get(response.data.properties.forecast)
           .then(response2 => {
             const weatherData = response2.data.properties.periods.filter(w => w.isDaytime);
-            this.setState({weatherData: weatherData, isWeatherHidden: Array(weatherData.length).fill(true)});
+            this.setState({weatherData: weatherData, isHidden: Array(weatherData.length).fill(true)});
           });
       })
       .catch(err => alert("There was an error fetching the weather data - " + err));
   }
 
   toggleWeatherCard(index) {
-    this.setState({ isWeatherHidden: this.state.isWeatherHidden.map((isHidden, i) => {
+    this.setState({ isHidden: this.state.isHidden.map((isHidden, i) => {
       if (i === index) return !isHidden;
       else return isHidden;
     })});
   }
 
   toggleAllCards(hide) {
-    this.setState({isWeatherHidden: Array(this.state.isWeatherHidden.length).fill(hide)});
+    this.setState({isHidden: Array(this.state.isHidden.length).fill(hide)});
   }
 
   render() {
@@ -122,7 +122,7 @@ class WeatherColumn extends Component {
         {this.state.weatherData.map((day, i) => {
           return (
             <WeatherCard {...day} 
-                isHidden={this.state.isWeatherHidden[i]} 
+                isHidden={this.state.isHidden[i]} 
                 toggle={this.toggleWeatherCard} index={i} key={i}/>
           );
         })}

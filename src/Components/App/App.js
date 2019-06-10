@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import './App.css';
 import WeatherColumn from '../WeatherColumn/WeatherColumn.js';
+import NewsColumn from '../NewsColumn/NewsColumn.js'
 
 class App extends Component {
   render() {
@@ -9,7 +10,10 @@ class App extends Component {
         <div className="header">
           <div className="title">News@Home</div>
         </div>
-        <WeatherColumn />
+        <div className="main-content">
+          <WeatherColumn />
+          <NewsColumn />
+        </div>
       </div>
     );
   }
