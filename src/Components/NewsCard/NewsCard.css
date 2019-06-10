@@ -1,0 +1,38 @@
+.newscard-container {
+  display: flex;
+  margin-top: 20px;
+  padding: 8px;
+  border: 1px solid #5a5a5a;
+  cursor: pointer;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.newscard-container:hover {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.newscard-image img {
+  border: 1px solid #5a5a5a;
+  max-height: 100px;
+}
+
+.newscard-content {
+  padding: 5px;
+  padding-left: 8px;
+}
+
+.newscard-title {
+  font-weight: bold;
+}
+
+.newscard-description {
+  font-size: 14px;
+  color: #cccccc;
+}

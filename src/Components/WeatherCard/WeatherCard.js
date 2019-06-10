@@ -3,7 +3,7 @@ import './WeatherCard.css';
 
 const WeatherCard = props => {
   return (
-    <div className="card-container" onClick={() => props.toggle(props.index)}>
+    <div className="weathercard-container" onClick={() => props.toggle(props.index)}>
       <div className="temperature-container">
         <div className="temperature-name">{props.name}</div>
         <div className="temperature-temp">{props.temperature}&deg;</div>
