@@ -102,6 +102,7 @@ class WeatherColumn extends Component {
   render() {
     return (
       <div className="weather">
+        <div className="weather-title">Weather</div>
         <div className="weather-header">
           <img className="header-img" 
               src="/images/collapsed.png"

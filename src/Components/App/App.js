@@ -8,7 +8,7 @@ class App extends Component {
     return (
       <div className="App">
         <div className="header">
-          <div className="title">News@Home</div>
+          <div className="title">Weather and News</div>
         </div>
         <div className="main-content">
           <WeatherColumn />
